@@ -20,6 +20,7 @@ class MLTests(TestCase):
             "hours-per-week": 68,
             "native-country": "United-States"
         }
+        
         my_alg = RandomForestClassifier()
         response = my_alg.compute_prediction(input_data)
         self.assertEqual('OK', response['status'])
