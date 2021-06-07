@@ -1,12 +1,12 @@
 from django.test import TestCase
 
-from income_classifier.random_forest import RandomForestClassifier
+from apps.ml.income_classifier.random_forest import RandomForestClassifier
 
 class MLTests(TestCase):
     def test_rf_algorithm(self):
         input_data = {
             "age": 37,
-            "workclass": "Private",
+            "workclass": 2,
             "fnlwgt": 34146,
             "education": "HS-grad",
             "education-num": 9,
@@ -20,7 +20,7 @@ class MLTests(TestCase):
             "hours-per-week": 68,
             "native-country": "United-States"
         }
-        
+
         my_alg = RandomForestClassifier()
         response = my_alg.compute_prediction(input_data)
         self.assertEqual('OK', response['status'])
