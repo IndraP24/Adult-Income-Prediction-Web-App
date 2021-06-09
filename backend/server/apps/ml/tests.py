@@ -1,26 +1,28 @@
 from django.test import TestCase
+import pandas as pd
 
 from apps.ml.income_classifier.random_forest import RandomForestClassifier
 
 class MLTests(TestCase):
     def test_rf_algorithm(self):
         input_data = {
-            "age": 37,
-            "workclass": 2,
-            "fnlwgt": 34146,
-            "education": "11th",
-            "education-num": 9,
-            "marital-status": "Married-civ-spouse",
-            "occupation": "Craft-repair",
-            "relationship": "Husband",
-            "race": "White",
-            "sex": "Male",
-            "capital-gain": 0,
-            "capital-loss": 0,
-            "hours-per-week": 68,
-            "native-country": "United-States"
+            "age": [37],
+            "workclass": ["Private"],
+            "fnlwgt": [34146],
+            "education": ["11th"],
+            "education-num": [9],
+            "marital-status": ["Married-civ-spouse"],
+            "occupation": ["Craft-repair"],
+            "relationship": ["Husband"],
+            "race": ["White"],
+            "sex": ["Male"],
+            "capital-gain": [0],
+            "capital-loss": [0],
+            "hours-per-week": [68],
+            "native-country": ["United-States"]
         }
 
+        input_data = pd.DataFrame(input_data)
         my_alg = RandomForestClassifier()
         response = my_alg.compute_prediction(input_data)
         self.assertEqual('OK', response['status'])
