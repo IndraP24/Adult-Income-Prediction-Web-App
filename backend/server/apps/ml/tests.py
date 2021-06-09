@@ -8,7 +8,7 @@ class MLTests(TestCase):
             "age": 37,
             "workclass": 2,
             "fnlwgt": 34146,
-            "education": "HS-grad",
+            "education": "11th",
             "education-num": 9,
             "marital-status": "Married-civ-spouse",
             "occupation": "Craft-repair",
