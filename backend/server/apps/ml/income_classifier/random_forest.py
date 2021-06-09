@@ -12,10 +12,12 @@ class RandomForestClassifier:
         # JSON to pandas DataFrame
         input_data = pd.DataFrame(input_data, index=[0])
         # fill missing values
-        input_data.fillna(self.values_fill_missing)
+        input_data.fillna(self.values_fill_missing, inplace=True)
+        print(input_data.head())
         # convert categoricals
         for column in ["workclass", "education", "marital-status", "occupation", "relationship", "race", "sex", "native-country"]:
             categorical_convert = self.encoders[column]
+            print(categorical_convert)
             input_data[column] = categorical_convert.transform(input_data[column])
 
         return input_data
