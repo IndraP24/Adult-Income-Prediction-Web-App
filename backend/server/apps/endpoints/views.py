@@ -1,16 +1,14 @@
 from django.shortcuts import render
+from django.db import transaction
 
 import json
 from numpy.random import rand
-from rest_framework import views, status
+from rest_framework import views, status, viewsets, mixins
 from rest_framework.response import Response
 from apps.ml.registry import MLRegistry
 from server.wsgi import registry
 
 # Create your views here.
-# backend/server/apps/endpoints/views.py file
-from rest_framework import viewsets
-from rest_framework import mixins
 
 from apps.endpoints.models import Endpoint
 from apps.endpoints.serializers import EndpointSerializer
