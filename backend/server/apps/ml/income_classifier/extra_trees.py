@@ -40,6 +40,7 @@ class ExtraTreesClassifier:
 
     def compute_prediction(self, input_data):
         try:
+            input_data = pd.json_normalize(input_data)
             input_data = self.preprocessing(input_data)
             prediction = self.predict(input_data)[0]  # only one sample
             prediction = self.postprocessing(prediction)
